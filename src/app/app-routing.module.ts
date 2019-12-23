@@ -4,7 +4,7 @@ import { SystemComponent } from './components/system/system.component';
 
 
 const routes: Routes = [
-  { path: '', component: SystemComponent }
+  { path: '', component: SystemComponent, loadChildren: './customs/system.module#SystemModule'  }
 ];
 
 @NgModule({

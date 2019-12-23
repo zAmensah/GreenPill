@@ -1,1 +1,73 @@
-<p>system works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async ) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async ) === false">
+    <mat-toolbar>GreenPill</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active-link">
+        <mat-icon>assessment</mat-icon>
+        Dashboard
+      </a>
+      <a mat-list-item [routerLink]="['/appointment']" routerLinkActive="active-link">
+        <mat-icon>event</mat-icon>
+        <span matBadge="{{ approveCount }}" matbadgeOverlap="false">
+          Appointment
+        </span>
+      </a>
+      <a mat-list-item [routerLink]="['/patients']" routerLinkActive="active-link">
+        <mat-icon>how_to_reg</mat-icon>
+        Patient List
+      </a>
+      <a mat-list-item [routerLink]="['/staff']" routerLinkActive="active-link">
+        <mat-icon>people_alt</mat-icon>
+        Staff List
+      </a>
+      <hr>
+      <a mat-list-item [routerLink]="['/blog']" routerLinkActive="active-link">
+        <mat-icon>amp_stories</mat-icon>
+        Blog
+      </a>
+      <a mat-list-item [routerLink]="['/pharm']" routerLinkActive="active-link">
+        <mat-icon>policy</mat-icon>
+        Pharmacy
+      </a>
+      <a mat-list-item [routerLink]="['/check']" routerLinkActive="active-link">
+        <mat-icon>playlist_add_check</mat-icon>
+        <span matBadge="{{ checkin }}" matbadgeOverlap="false">
+          Check-In
+        </span>
+      </a>
+      <hr>
+      <a mat-list-item>
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button type="button" aria-label="Toogle sidenav" (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-form-field appearance="outline">
+        <input matInput class="container-fluid" placeholder="Search Patient or Staff">
+        <mat-icon matPrefix style="font-size: 22px;">search</mat-icon>
+      </mat-form-field>
+      <mat-icon style="margin-left: 20px; margin-right: 15px;">notifications</mat-icon>
+      <div *ngIf="data.staff" class="d-flex justify-content-start">
+        <div class="name">
+          <ngx-avatar *ngIf="data.staff.image; else avatar" src="{{ data.staff.image }}" size="40"></ngx-avatar>
+        <ng-template #avatar>
+          <ngx-avatar name="{{ data.staff.name }}" size="40"></ngx-avatar>
+        </ng-template>
+        </div>
+        <span *ngIf="data.staff.isDoctor; else name">Dr. {{ data.staff.name }}</span>
+        <ng-template #name>
+          <span>{{ data.staff.name }}</span>
+        </ng-template>
+      </div>
+    </mat-toolbar>
+    <!-- Content Here-->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
