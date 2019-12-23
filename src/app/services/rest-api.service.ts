@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class RestApiService {
     return token ? new HttpHeaders().set('Authorization', token) : null;
   }
 
-  get(link: string) {
+  get(link: string){
     return this.http.get(link, { headers: this.getHeaders() }).toPromise();
   }
 
-  post(link: string, body: any) {
+  post(link: string, body: any): Observable<any> {
     return this.http.post(link, body, { headers: this.getHeaders() });
   }
 }

@@ -1,0 +1,20 @@
+h4 {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #45A27D;
+}
+
+.patient-list {
+  overflow:  hidden !important;
+}
+
+.table-list {
+  height: 50vh;
+}
+
+.mat-spinner {
+  margin: auto;
+}
