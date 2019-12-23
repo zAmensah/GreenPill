@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from './material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from '../auth/login/login.component';
 import { SignupComponent } from '../auth/signup/signup.component';
-import { MessagesComponent } from '../messages/messages.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, MessagesComponent],
+  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

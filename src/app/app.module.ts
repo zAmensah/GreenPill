@@ -4,8 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from './customs/auth.module';
+import { SystemModule } from './customs/system.module';
 import { MaterialModule } from './customs/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,7 +16,6 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RestApiService } from './services/rest-api.service';
 import { DataService } from './services/data.service';
 
-import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -21,19 +23,21 @@ import { MessagesComponent } from './messages/messages.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    SystemModule,
     MaterialModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     MaterialModule,
-    MessagesComponent,
+    FormsModule,
   ],
   providers: [AuthGuardService, RestApiService, DataService],
   bootstrap: [AppComponent]

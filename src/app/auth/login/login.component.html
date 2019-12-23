@@ -1,1 +1,84 @@
-<button mat-raised-button>Hello</button>
+<!-- <section id="login">
+
+  <div class="row">
+
+    <div class="col-md-7 textSide">
+      <h1>greenPill Here</h1>
+    </div>
+
+    <div class="col-md-4">
+
+      <p *ngIf="data.message">
+        <ngb-alert [type]="data.messageType" [dismissible]=false>
+          {{ data.message }}
+        </ngb-alert>
+      </p>
+
+        <div class="login">
+          <h4 class="text-center">Login</h4>
+          <hr>
+          <form>
+            <div class="row">
+              <mat-form-field>
+                <input matInput type="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button class="btn btn-block" (click)="login()" [disabled]="btnDisabled">LOGIN</button>
+          </form>
+        </div>
+    </div>
+
+  </div>
+
+</section> -->
+<div class="loginSection">
+
+  <div class="row">
+
+    <div class="col textSide">
+      <h1>greenPill</h1>
+    </div>
+
+    <div class="col col-md-4">
+      <div class="login">
+        <h4 class="text-center">Login to GreenPill</h4>
+        <hr>
+
+        <!-- Error Message Section -->
+        <p *ngIf="data.message">
+          <ngb-alert [type]="data.messageType" [dismissible]="false">
+            {{ data.message }}
+          </ngb-alert>
+        </p>
+
+        <form>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Email</mat-label>
+              <input matInput type="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Password</mat-label>
+              <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+            </mat-form-field>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <a href="http://">
+              Forgot Password
+            </a>
+          </div>
+          <button mat-raised-button class="btn btn-block" (click)="login()" [disabled]="btnDisabled">Login</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>
